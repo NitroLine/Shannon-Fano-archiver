@@ -1,7 +1,9 @@
-import sys
 import argparse
 from shannon_fano import *
+import tkinter
 
+s = tkinter.Tk()
+s.mainloop()
 parser = argparse.ArgumentParser(description='Archiver on Shannon-Fano compression algorithm.')
 parser.add_argument('--compress', '-c', action='store_true', default=False, help='Compress file')
 parser.add_argument('--extract', '-e', action='store_true', default=False, help='Extract file')
@@ -20,15 +22,15 @@ if args.compress:
     code_len = calculate_code_len(d)
     code = create_code(code_len)
     compress(args.input, code, calculate_padding(code_len, occurrence), filename_out)
-    sys.exit(0)
+    exit(0)
 
-    
+
 if args.extract:
     filename_out = args.input + '.un'
     if args.output:
         filename_out = args.output
     print(f'Extract from {args.input} to {filename_out}')
     extract(args.input, filename_out)
-    sys.exit(0)
+    exit(0)
 
 print('No function: -c --compress, -e --extract')
