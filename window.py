@@ -2,9 +2,10 @@ from tkinter import *
 
 
 class args:
-    def __init__(self, compress, input):
+    def __init__(self, compress, input, checksum):
         self.compress = compress
         self.input = input
+        self.checksum = checksum
 
 
 def start_window(main_command):
@@ -19,7 +20,7 @@ def start_window(main_command):
     def start_main_command():
         g = entry.get()
         global compress
-        main_command(args(compress, g))
+        main_command(args(compress, g, True))
 
     def add_entry():
         entry.grid(column=3, row=0)
